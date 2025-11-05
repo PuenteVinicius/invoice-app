@@ -26,8 +26,6 @@ dist-ssr
 *.*.env
 
 pnpm-lock.yaml
-yarn.lock
-package-lock.json
 bun.lockb
 *storybook.log
 storybook-static
