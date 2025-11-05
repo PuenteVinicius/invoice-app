@@ -1,4 +1,4 @@
-# GitHub Users Search
+# Invoice App
 
 Uma aplicação Next.js moderna para buscar e explorar usuários do GitHub com interface elegante e recursos avançados.
 
