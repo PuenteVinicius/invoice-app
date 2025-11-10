@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  background: $purple-800;
+  width: 100%;
+  min-height: 177px;
+  justify-content: center;
+  align-items: center;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    flex-flow: column;
+
+    @include respond-to(desktop) {
+      flex-flow: row;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    margin-bottom: 24px;
+    @include respond-to(desktop) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
