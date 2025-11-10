@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  border: none;
+  background: none;
+  border-radius: 8px;
+}
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  margin: 0 35px;
+  justify-content: space-between;
+}
+.header {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 22px;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.value {
+  font-size: 42px;
+  margin-bottom: 27px;
+  font-weight: bold;
+}
+
+.primary {
+  background: $white;
+  color: $gray-700;
+}
+
+.secondary {
+  background: $secondary;
+  color: white;
+}
+
+.warning {
+  background: $warning;
+  color: white;
+}
+
+.sm {
+  min-width: 32px;
+}
+
+.md {
+  min-height: 175px;
+  min-width: 388px;
+}
+
+.lg {
+  min-width: 58px;
+}

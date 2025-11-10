@@ -17,7 +17,7 @@ export default function RootLayout({
       ></link>
       <body
         className={`${poppins.className} ${roboto.className}`}
-        style={{ margin: 0 }}
+        style={{ margin: 0, background: "#F1F5F8" }}
       >
         {children}
       </body>

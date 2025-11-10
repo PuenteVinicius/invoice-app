@@ -1,0 +1,20 @@
+.invoice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  top: 20px;
+  flex-flow: column;
+  @include respond-to(desktop) {
+    top: -25px;
+    flex-flow: row;
+  }
+}
+
+.card {
+  margin: 20px 0;
+  @include respond-to(desktop) {
+    margin: 0 20px;
+  }
+}
