@@ -10,7 +10,7 @@ import { InvoiceTable } from "../../components/invoiceTable/InvoiceTable";
 
 export const InvoiceManagement = ({}) => {
   return (
-    <div>
+    <main>
       <div className={`${styles.invoice}`}>
         <Card
           key={1}
@@ -35,6 +35,6 @@ export const InvoiceManagement = ({}) => {
       <div className={`${styles.invoice_table}`}>
         <InvoiceTable />
       </div>
-    </div>
+    </main>
   );
 };

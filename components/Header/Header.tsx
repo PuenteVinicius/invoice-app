@@ -6,14 +6,18 @@ import tictoLogo from "../../assets/ticto-logo.svg";
 
 ("use-client");
 
-export const Header = () => (
+interface HeaderProps {
+  onNewTransaction: () => void;
+}
+
+export const Header = ({ onNewTransaction }: HeaderProps) => (
   <header className={`${styles.header}`}>
     <div className={`${styles.header__wrapper}`}>
       <div className={`${styles.header__logo}`}>
         <Image src={tictoLogo} alt="Ticto logo" />
       </div>
       <div className={`${styles.header__button}`}>
-        <Button>
+        <Button onButtonClick={() => onNewTransaction()}>
           <span>Nova transação</span>
         </Button>
       </div>

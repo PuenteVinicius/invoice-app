@@ -1,0 +1,37 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: black, $alpha: 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.content {
+  background: $white;
+  min-width: 692px;
+  min-height: 623px;
+  border-radius: 8px;
+  padding: 28px;
+}
+.crossicon {
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+.wrapper {
+  margin-top: 30px;
+}
+
+.title {
+  font-size: 24px;
+  text-align: left;
+  font-weight: bold;
+  color: $gray-800;
+}
