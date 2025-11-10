@@ -1,4 +1,3 @@
-// _variables.scss (or similar file)
 $breakpoints: (
   'mobile': 320px,
   'tablet': 768px,
@@ -6,7 +5,6 @@ $breakpoints: (
   'widescreen': 1440px
 );
 
-// _mixins.scss
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (min-width: map-get($breakpoints, $breakpoint)) {
