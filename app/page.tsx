@@ -9,9 +9,7 @@ export default function Home() {
     <div>
       <Header></Header>
       <main>
-        <div>
-          <InvoiceManagement />
-        </div>
+        <InvoiceManagement />
       </main>
     </div>
   );
