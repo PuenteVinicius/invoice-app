@@ -1,0 +1,41 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  
+}
+.primary {
+  background: $primary;
+  color: $gray-300
+}
+.secondary {
+  background: $secondary;
+  color: $gray-50;
+}
+
+.warning {
+  background: $warning;
+  color: $gray-50;
+}
+.sm {
+  min-width: 205px;
+  min-height: 43px;
+  font-size: 14px;
+}
+
+.md {
+  min-width: 245px;
+  min-height: 53px;
+  font-size: 16px;
+}
+
+.lg {
+  min-width: 275px;
+  min-height: 58px;
+  font-size: 16px;
+}
