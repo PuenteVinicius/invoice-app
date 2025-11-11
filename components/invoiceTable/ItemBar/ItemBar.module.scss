@@ -28,6 +28,12 @@
   width: 200px ;
 }
 
+.trash {
+  cursor: pointer;
+  width: 24px;
+}
+
+
 .expense {
   color: $warning;
 }
@@ -35,3 +41,4 @@
 .income {
   color: $secondary;
 }
+

@@ -1,6 +1,8 @@
 import React from "react";
 import { InvoiceCategory, InvoiceType } from "../../../types/invoice";
 import styles from "./ItemBar.module.scss";
+import Image from "next/image";
+import trashIcon from "../../../assets/feather-trash.svg";
 
 ("use-client");
 
@@ -44,6 +46,9 @@ export const ItemBar = ({
       </li>
       <li className={`${styles.date}`}>
         <span>{date}</span>
+      </li>
+      <li className={`${styles.trash}`} onClick={() => onDeleteItemClick()}>
+        <Image src={trashIcon} alt="trash icon" />
       </li>
     </ul>
   );

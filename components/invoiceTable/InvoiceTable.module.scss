@@ -5,3 +5,33 @@
   align-items: center;
   width: 100%;
 }
+
+.th {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  border-radius: 8px;
+  background: transparent;
+  padding: 0 20px;
+  font-weight: bold ;
+  color: $gray-400;
+}
+
+.description {
+  width: 200px ;
+}
+
+.value {
+  width: 200px ;
+}
+
+.category {
+  width: 200px ;
+}
+
+.date {
+  width: 290px ;
+}

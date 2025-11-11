@@ -7,6 +7,20 @@ import styles from "./InvoiceTable.module.scss";
 export const InvoiceTable = ({}) => {
   return (
     <div className={`${styles.table}`}>
+      <ul className={`${styles.th}`}>
+        <li className={`${styles.description}`}>
+          <span>Descrição</span>
+        </li>
+        <li className={`${styles.value}`}>
+          <span>Valor</span>
+        </li>
+        <li className={`${styles.category}`}>
+          <span>Categoria</span>
+        </li>
+        <li className={`${styles.date}`}>
+          <span>Data</span>
+        </li>
+      </ul>
       <ItemBar
         description="Curso de NextJS"
         value="R$ 899,OO"
