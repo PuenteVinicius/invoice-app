@@ -7,7 +7,7 @@
   top: 20px;
   flex-flow: column;
   @include respond-to(desktop) {
-    top: -25px;
+    top: -35px;
     flex-flow: row;
   }
 }
