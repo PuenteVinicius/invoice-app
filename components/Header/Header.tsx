@@ -17,9 +17,7 @@ export const Header = ({ onNewTransaction }: HeaderProps) => (
         <Image src={tictoLogo} alt="Ticto logo" />
       </div>
       <div className={`${styles.header__button}`}>
-        <Button onButtonClick={() => onNewTransaction()}>
-          <span>Nova transação</span>
-        </Button>
+        <Button onButtonClick={() => onNewTransaction()}>Nova transação</Button>
       </div>
     </div>
   </header>

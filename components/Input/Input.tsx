@@ -6,7 +6,7 @@ import styles from "./Input.module.scss";
 
 interface InputProps {
   placeholder: string;
-  value: string;
+  value?: string;
   id: string;
   size?: Size;
   className?: string;

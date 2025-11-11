@@ -1,12 +1,14 @@
 import React from "react";
 import { ItemBar } from "./ItemBar/ItemBar";
 import styles from "./InvoiceTable.module.scss";
+import { Roboto } from "next/font/google";
+const roboto = Roboto({ weight: "300", subsets: ["latin"] });
 
 ("use-client");
 
 export const InvoiceTable = ({}) => {
   return (
-    <div className={`${styles.table}`}>
+    <div className={`${styles.table} ${roboto.className}`}>
       <ul className={`${styles.th}`}>
         <li className={`${styles.description}`}>
           <span>Descrição</span>

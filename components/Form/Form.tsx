@@ -2,6 +2,11 @@ import React, { FormEvent, useState } from "react";
 import styles from "./Form.module.scss";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
+import { Radio } from "../Radio/Radio";
+import Image from "next/image";
+
+import UpArrowIcon from "../../assets/feather-arrow-down-circle.svg";
+import DownArrowIcon from "../../assets/feather-arrow-up-circle.svg";
 
 ("use-client");
 
@@ -27,27 +32,26 @@ export const Form = () => {
     >
       <Input name="name" placeholder="Nome" id="name" />
       <Input name="price" placeholder="Preço" id="price" />
-      <div>
-        <label>
-          <input
-            type="radio"
-            name="invoiceOption"
-            value="income"
-            checked={selectedValue === "income"}
-            onChange={handleChange}
-          />
-          Entrada
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="invoiceOption"
-            value="expense"
-            checked={selectedValue === "expense"}
-            onChange={handleChange}
-          />
-          Saída
-        </label>
+      <div className={`${styles.radioGroup}`}>
+        <Radio
+          className={`${styles.radioItem}`}
+          selectedValue={selectedValue}
+          label="Entrada"
+          id="income"
+          name="income"
+          value="income"
+          handleChange={handleChange}
+          icon={<Image src={DownArrowIcon} alt="Down arrow icon logo" />}
+        />
+        <Radio
+          selectedValue={selectedValue}
+          label="Saída"
+          id="expense"
+          name="ebxpense"
+          value="expense"
+          handleChange={handleChange}
+          icon={<Image src={UpArrowIcon} alt="Up arrow icon logo" />}
+        />
       </div>
       <Input name="category" placeholder="Categoria" id="category" />
       <Button type="submit">Cadastrar</Button>

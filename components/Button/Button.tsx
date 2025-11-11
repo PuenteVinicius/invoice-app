@@ -1,6 +1,8 @@
 import React from "react";
 import { Size, Variant } from "../../types/styles";
 import styles from "./Button.module.scss";
+import { Roboto } from "next/font/google";
+const roboto = Roboto({ weight: "500", subsets: ["latin"] });
 
 ("use-client");
 
@@ -41,7 +43,7 @@ export const Button = ({
       className={`${styles.button} ${getVariant(variant)} ${getSize(size)}`}
       onClick={() => onButtonClick()}
     >
-      {children}
+      <p className={`${styles.text} ${roboto.className}`}>{children}</p>
     </button>
   );
 };

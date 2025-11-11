@@ -6,3 +6,12 @@
   width: 100%;
   height: auto;
 }
+.radioGroup {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.radioItem {
+  margin-right: 15px;
+}

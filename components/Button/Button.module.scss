@@ -6,9 +6,15 @@
   border: none;
   cursor: pointer;
   text-transform: uppercase;
-  font-weight: 600;
-  
 }
+
+.text {
+  text-align: left;
+  font: normal normal bold 16px/21px Roboto;
+  letter-spacing: 0;
+  color: $gray-400;
+}
+
 .primary {
   background: $primary;
   color: $gray-300;

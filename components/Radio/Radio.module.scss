@@ -1,0 +1,24 @@
+.radio {
+  display: flex;
+  height: 67px;
+  background: $white;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $gray-300;
+  border-radius: 7px;
+  cursor: pointer;
+  padding-right: 30px;
+  width: inherit;
+  color: $gray-800;
+  input {
+    visibility: hidden;
+  }
+}
+
+.checked {
+  background: $gray-100;
+}
+
+.icon {
+  margin-right: 18px;
+}

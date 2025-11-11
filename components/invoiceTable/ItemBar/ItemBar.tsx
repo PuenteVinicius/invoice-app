@@ -3,6 +3,8 @@ import { InvoiceCategory, InvoiceType } from "../../../types/invoice";
 import styles from "./ItemBar.module.scss";
 import Image from "next/image";
 import trashIcon from "../../../assets/feather-trash.svg";
+import { Roboto } from "next/font/google";
+const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 
 ("use-client");
 
@@ -38,7 +40,7 @@ export const ItemBar = ({
       <li className={`${styles.description}`}>
         <span>{description}</span>
       </li>
-      <li className={`${styles.value}`}>
+      <li className={`${styles.value} ${roboto.className}`}>
         <span className={`${invoiceTypeClass[type]}`}>{value}</span>
       </li>
       <li className={`${styles.category}`}>

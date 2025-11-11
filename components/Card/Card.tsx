@@ -1,6 +1,10 @@
 import React from "react";
 import { Size, Variant } from "../../types/styles";
 import styles from "./Card.module.scss";
+import { Poppins, Roboto } from "next/font/google";
+const poppins = Poppins({ weight: "200", subsets: ["latin"] });
+const poppinsBold = Poppins({ weight: "500", subsets: ["latin"] });
+const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
 ("use-client");
 
@@ -40,16 +44,18 @@ export const Card = ({
 
   return (
     <div
-      className={`${className} ${styles.card} ${getVariant(variant)} ${getSize(
-        size
-      )}`}
+      className={`${className} ${styles.card} ${poppins.className} ${getVariant(
+        variant
+      )} ${getSize(size)}`}
     >
       <div className={`${styles.wrapper}`}>
         <div className={`${styles.header}`}>
-          <span className={`${styles.title}`}>{title}</span>
+          <span className={`${styles.title} ${roboto.className}`}>{title}</span>
           <span>{rightIcon}</span>
         </div>
-        <div className={`${styles.value}`}>{value}</div>
+        <div className={`${styles.value} ${poppinsBold.className}`}>
+          {value}
+        </div>
       </div>
     </div>
   );

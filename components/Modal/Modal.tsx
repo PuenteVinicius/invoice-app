@@ -3,6 +3,8 @@ import styles from "./Modal.module.scss";
 import Image from "next/image";
 import cross from "../../assets/cross.svg";
 import { Form } from "../Form/Form";
+import { Roboto } from "next/font/google";
+const roboto = Roboto({ weight: "500", subsets: ["latin"] });
 
 ("use-client");
 
@@ -19,7 +21,9 @@ export const Modal = ({ isOpen, title, onSubmit, onClose }: ModalProps) => {
       <div className={`${styles.content}`}>
         <div className={`${styles.header}`}>
           <div className={`${styles.wrapper}`}>
-            <span className={`${styles.title}`}>{title}</span>
+            <span className={`${styles.title} ${roboto.className}`}>
+              {title}
+            </span>
           </div>
           <div className={`${styles.crossicon}`} onClick={() => onClose()}>
             <Image height={28} width={28} src={cross} alt="Cross Icon" />
