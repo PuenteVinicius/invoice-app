@@ -4,8 +4,9 @@ import styles from "./ItemBar.module.scss";
 import Image from "next/image";
 import trashIcon from "../../../assets/feather-trash.svg";
 import { Roboto } from "next/font/google";
-import Invoice, { Category, Type } from "../../../types/invoice";
+import Invoice, { Type } from "../../../types/invoice";
 import { formatToBRL } from "../../../lib/helpers";
+import Moment from "react-moment";
 const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 
 ("use-client");
@@ -21,11 +22,6 @@ export const ItemBar = ({ invoice, onDeleteItemClick }: ItemBarProps) => {
     [Type.INCOME]: styles.income,
   };
 
-  const categoryName = {
-    [Category.EDUCATION]: "Educação",
-    [Category.SALARY]: "Receita Fixa",
-  };
-
   return (
     <ul className={`${styles.item}`}>
       <li className={`${styles.description}`}>
@@ -37,10 +33,10 @@ export const ItemBar = ({ invoice, onDeleteItemClick }: ItemBarProps) => {
         </span>
       </li>
       <li className={`${styles.category}`}>
-        <span>{categoryName[invoice.category]}</span>
+        <span>{invoice.category}</span>
       </li>
       <li className={`${styles.date}`}>
-        <span>{invoice.date}</span>
+        <Moment format="DD/MM/YYYY HH:MM">{invoice.date}</Moment>
       </li>
       <li
         className={`${styles.trash}`}

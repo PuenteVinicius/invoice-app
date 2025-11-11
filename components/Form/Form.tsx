@@ -7,31 +7,38 @@ import Image from "next/image";
 
 import UpArrowIcon from "../../assets/feather-arrow-down-circle.svg";
 import DownArrowIcon from "../../assets/feather-arrow-up-circle.svg";
+import Invoice, { Type } from "../../types/invoice";
 
 ("use-client");
 
-interface FormProps {}
+interface FormProps {
+  onRegisterNewInvoice: (invoice: Invoice) => void;
+}
 
-export const Form = () => {
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+export const Form = ({ onRegisterNewInvoice }: FormProps) => {
+  const onSubmit = (event: any) => {
     event.preventDefault();
-
-    console.log(event);
+    const formData = new FormData(event.target);
+    const dataInvoiceObject: any = Object.fromEntries(formData.entries());
+    let invoice: Invoice = {
+      ...dataInvoiceObject,
+    };
+    invoice.id = crypto.randomUUID();
+    invoice.date = new Date().toString();
+    invoice.type = selectedValue;
+    onRegisterNewInvoice(invoice);
   };
 
-  const [selectedValue, setSelectedValue] = useState("");
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
+  const [selectedValue, setSelectedValue] = useState<string>("");
+  const handleChange = (event) => setSelectedValue(event.target.value);
 
   return (
     <form
       className={`${styles.form}`}
-      onSubmit={(event: FormEvent<HTMLFormElement>) => onSubmit(event)}
+      onSubmit={(event: any) => onSubmit(event)}
     >
-      <Input name="name" placeholder="Nome" id="name" />
-      <Input name="price" placeholder="Preço" id="price" />
+      <Input name="description" placeholder="descrição" id="description" />
+      <Input name="ammount" placeholder="Preço" id="ammount" type="number" />
       <div className={`${styles.radioGroup}`}>
         <Radio
           className={`${styles.radioItem}`}
@@ -39,7 +46,7 @@ export const Form = () => {
           label="Entrada"
           id="income"
           name="income"
-          value="income"
+          value={Type.INCOME}
           handleChange={handleChange}
           icon={<Image src={DownArrowIcon} alt="Down arrow icon logo" />}
         />
@@ -47,14 +54,16 @@ export const Form = () => {
           selectedValue={selectedValue}
           label="Saída"
           id="expense"
-          name="ebxpense"
-          value="expense"
+          name="expense"
+          value={Type.EXPENSE}
           handleChange={handleChange}
           icon={<Image src={UpArrowIcon} alt="Up arrow icon logo" />}
         />
       </div>
       <Input name="category" placeholder="Categoria" id="category" />
-      <Button type="submit">Cadastrar</Button>
+      <Button disabled={!selectedValue} type="submit">
+        Cadastrar
+      </Button>
     </form>
   );
 };

@@ -31,7 +31,7 @@ export const Radio = ({
   return (
     <label
       className={`${styles.radio} ${className} ${roboto.className} ${
-        selectedValue === name ? styles.checked : null
+        selectedValue === value ? styles.checked : null
       }`}
     >
       <input

@@ -11,6 +11,7 @@ interface InputProps {
   size?: SizeType;
   className?: string;
   name: string;
+  type?: string;
 }
 
 export const Input = ({
@@ -19,10 +20,11 @@ export const Input = ({
   id,
   className,
   name,
+  type = "text",
 }: InputProps) => {
   return (
     <input
-      type="text"
+      type={type}
       name={name}
       className={`${styles.input} ${className}`}
       placeholder={placeholder}

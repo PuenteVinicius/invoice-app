@@ -4,6 +4,7 @@ import Image from "next/image";
 import cross from "../../assets/cross.svg";
 import { Form } from "../Form/Form";
 import { Roboto } from "next/font/google";
+import Invoice from "../../types/invoice";
 const roboto = Roboto({ weight: "500", subsets: ["latin"] });
 
 ("use-client");
@@ -11,7 +12,7 @@ const roboto = Roboto({ weight: "500", subsets: ["latin"] });
 interface ModalProps {
   isOpen: boolean;
   title?: string;
-  onSubmit?: () => void;
+  onSubmit: (invoice: any) => void;
   onClose?: () => void;
 }
 
@@ -30,7 +31,9 @@ export const Modal = ({ isOpen, title, onSubmit, onClose }: ModalProps) => {
           </div>
         </div>
         <div className={`${styles.body}`}>
-          <Form />
+          <Form
+            onRegisterNewInvoice={(invoice: Invoice) => onSubmit(invoice)}
+          />
         </div>
       </div>
     </div>

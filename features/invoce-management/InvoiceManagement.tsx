@@ -7,10 +7,20 @@ import featherArrowUpRight from "../../assets/feather-arrow-up-right.svg";
 import { InvoiceTable } from "../../components/invoiceTable/InvoiceTable";
 import { useInvoice } from "../../hooks/useInvoice";
 import Invoice from "../../types/invoice";
+import { Modal } from "../../components/Modal/Modal";
 
 ("use-client");
 
-export const InvoiceManagement = () => {
+export interface InvoiceManagementProps {
+  isModalOpen: boolean;
+  onCloseModal: () => void;
+}
+
+export const InvoiceManagement = ({
+  isModalOpen,
+  onCloseModal,
+}: InvoiceManagementProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(isModalOpen);
   const {
     invoices,
     totalExpense,
@@ -20,6 +30,7 @@ export const InvoiceManagement = () => {
     updateTotalIncome,
     updateTotalAmmount,
     removeInvoice,
+    addNewInvoice,
   } = useInvoice();
 
   useEffect(() => {
@@ -30,11 +41,15 @@ export const InvoiceManagement = () => {
   useEffect(() => {
     updateTotalExpenses(invoices);
     updateTotalIncome(invoices);
-  }, [removeInvoice]);
+  }, [removeInvoice, addNewInvoice]);
 
   useEffect(() => {
     updateTotalAmmount(totalIncome, totalExpense);
   }, [totalIncome, totalExpense]);
+
+  useEffect(() => {
+    setIsOpen(isModalOpen);
+  }, [isModalOpen]);
 
   return (
     <main>
@@ -65,6 +80,15 @@ export const InvoiceManagement = () => {
           onExcludeInvoice={(invoice: Invoice) => removeInvoice(invoice)}
         />
       </div>
+      <Modal
+        onSubmit={(invoice: Invoice) => {
+          addNewInvoice(invoice);
+          onCloseModal();
+        }}
+        isOpen={isOpen}
+        title="Cadastrar Transação"
+        onClose={() => onCloseModal()}
+      />
     </main>
   );
 };

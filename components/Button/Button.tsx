@@ -9,6 +9,7 @@ const roboto = Roboto({ weight: "500", subsets: ["latin"] });
 interface ButtonProps {
   variant?: VariantType;
   size?: SizeType;
+  disabled: boolean;
   onButtonClick?: () => void;
   type?: any;
   children: any;
@@ -29,9 +30,10 @@ const SIZE_CLASS = {
 export const Button = ({
   variant = "primary",
   size = "md",
-  onButtonClick,
+  onButtonClick = () => {},
   children,
   type,
+  disabled,
 }: ButtonProps) => {
   const getVariant = (variant: VariantType): string => VARIANT_CLASS[variant];
 
@@ -42,6 +44,7 @@ export const Button = ({
       type={type}
       className={`${styles.button} ${getVariant(variant)} ${getSize(size)}`}
       onClick={() => onButtonClick()}
+      disabled={disabled}
     >
       <p className={`${styles.text} ${roboto.className}`}>{children}</p>
     </button>
