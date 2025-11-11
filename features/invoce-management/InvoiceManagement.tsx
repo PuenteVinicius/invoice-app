@@ -56,7 +56,7 @@ export const InvoiceManagement = () => {
           key={3}
           title="Saldo total"
           value={totalAmmount}
-          variant="secondary"
+          variant={`${totalAmmount <= 0 ? "warning" : "secondary"}`}
         />
       </div>
       <div className={`${styles.invoice_table}`}>
