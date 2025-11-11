@@ -11,17 +11,11 @@ const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 ("use-client");
 
 interface ItemBarProps {
-  onDeleteItemClick: () => void;
+  invoice: Invoice;
+  onDeleteItemClick: (invoice: Invoice) => void;
 }
 
-export const ItemBar = ({
-  description,
-  type,
-  ammount,
-  category,
-  date,
-  onDeleteItemClick = () => console.log("click"),
-}: ItemBarProps & Invoice) => {
+export const ItemBar = ({ invoice, onDeleteItemClick }: ItemBarProps) => {
   const invoiceTypeClass = {
     [Type.EXPENSE]: styles.expense,
     [Type.INCOME]: styles.income,
@@ -35,20 +29,23 @@ export const ItemBar = ({
   return (
     <ul className={`${styles.item}`}>
       <li className={`${styles.description}`}>
-        <span>{description}</span>
+        <span>{invoice.description}</span>
       </li>
       <li className={`${styles.value} ${roboto.className}`}>
-        <span className={`${invoiceTypeClass[type]}`}>
-          {formatToBRL(ammount)}
+        <span className={`${invoiceTypeClass[invoice.type]}`}>
+          {formatToBRL(invoice.ammount)}
         </span>
       </li>
       <li className={`${styles.category}`}>
-        <span>{categoryName[category]}</span>
+        <span>{categoryName[invoice.category]}</span>
       </li>
       <li className={`${styles.date}`}>
-        <span>{date}</span>
+        <span>{invoice.date}</span>
       </li>
-      <li className={`${styles.trash}`} onClick={() => onDeleteItemClick()}>
+      <li
+        className={`${styles.trash}`}
+        onClick={() => onDeleteItemClick(invoice)}
+      >
         <Image src={trashIcon} alt="trash icon" />
       </li>
     </ul>

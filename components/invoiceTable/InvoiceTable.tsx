@@ -9,9 +9,13 @@ const roboto = Roboto({ weight: "300", subsets: ["latin"] });
 
 interface InvoiceTableProps {
   invoices: Invoice[];
+  onExcludeInvoice: (invoiceToExclude: Invoice) => void;
 }
 
-export const InvoiceTable = ({ invoices }: InvoiceTableProps) => {
+export const InvoiceTable = ({
+  invoices,
+  onExcludeInvoice,
+}: InvoiceTableProps) => {
   return (
     <div className={`${styles.table} ${roboto.className}`}>
       <ul className={`${styles.th}`}>
@@ -31,12 +35,9 @@ export const InvoiceTable = ({ invoices }: InvoiceTableProps) => {
       {invoices &&
         invoices.map((invoice: Invoice) => (
           <ItemBar
-            description={invoice.description}
-            ammount={invoice.ammount}
-            type={invoice.type}
-            category={invoice.category}
-            date={invoice.date}
-            onDeleteItemClick={() => console.log("")}
+            key={invoice.id}
+            invoice={invoice}
+            onDeleteItemClick={(invoice: Invoice) => onExcludeInvoice(invoice)}
           />
         ))}
     </div>

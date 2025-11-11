@@ -3,6 +3,7 @@ import styles from "./Card.module.scss";
 
 import { Size, SizeType, Variant, VariantType } from "../../types/styles";
 import { Poppins, Roboto } from "next/font/google";
+import { formatToBRL } from "../../lib/helpers";
 
 const poppins = Poppins({ weight: "200", subsets: ["latin"] });
 const poppinsBold = Poppins({ weight: "500", subsets: ["latin"] });
@@ -12,7 +13,7 @@ const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
 interface CardProps {
   title?: string;
-  value?: string;
+  value?: number;
   children?: React.ReactElement;
   rightIcon?: any;
   variant?: VariantType;
@@ -56,7 +57,7 @@ export const Card = ({
           <span>{rightIcon}</span>
         </div>
         <div className={`${styles.value} ${poppinsBold.className}`}>
-          {value}
+          {formatToBRL(value)}
         </div>
       </div>
     </div>

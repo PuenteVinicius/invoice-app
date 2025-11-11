@@ -5,18 +5,36 @@ import Image from "next/image";
 import featherArrowDownRight from "../../assets/feather-arrow-down-right.svg";
 import featherArrowUpRight from "../../assets/feather-arrow-up-right.svg";
 import { InvoiceTable } from "../../components/invoiceTable/InvoiceTable";
-import Invoice from "../../types/invoice";
 import { useInvoice } from "../../hooks/useInvoice";
+import Invoice from "../../types/invoice";
 
 ("use-client");
 
 export const InvoiceManagement = () => {
-  const [invoices, setInvoices] = useState<Invoice[]>();
-  const { getInvoices } = useInvoice();
+  const {
+    invoices,
+    totalExpense,
+    totalIncome,
+    totalAmmount,
+    updateTotalExpenses,
+    updateTotalIncome,
+    updateTotalAmmount,
+    removeInvoice,
+  } = useInvoice();
 
   useEffect(() => {
-    setInvoices(getInvoices());
+    updateTotalExpenses(invoices);
+    updateTotalIncome(invoices);
   }, []);
+
+  useEffect(() => {
+    updateTotalExpenses(invoices);
+    updateTotalIncome(invoices);
+  }, [removeInvoice]);
+
+  useEffect(() => {
+    updateTotalAmmount(totalIncome, totalExpense);
+  }, [totalIncome, totalExpense]);
 
   return (
     <main>
@@ -24,25 +42,28 @@ export const InvoiceManagement = () => {
         <Card
           key={1}
           title="Entradas"
-          value="R$ 1.529.289,52"
+          value={totalIncome}
           rightIcon={<Image alt="Card Icon" src={featherArrowDownRight} />}
         />
         <Card
           key={2}
           title="Saídas"
-          value="R$ 1.529.289,52"
+          value={totalExpense}
           rightIcon={<Image alt="Card Icon" src={featherArrowUpRight} />}
           className={`${styles.card}`}
         />
         <Card
           key={3}
           title="Saldo total"
-          value="R$ 50,00"
+          value={totalAmmount}
           variant="secondary"
         />
       </div>
       <div className={`${styles.invoice_table}`}>
-        <InvoiceTable invoices={invoices} />
+        <InvoiceTable
+          invoices={invoices}
+          onExcludeInvoice={(invoice: Invoice) => removeInvoice(invoice)}
+        />
       </div>
     </main>
   );
