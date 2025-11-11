@@ -5,6 +5,7 @@ import Image from "next/image";
 import trashIcon from "../../../assets/feather-trash.svg";
 import { Roboto } from "next/font/google";
 import Invoice, { Category, Type } from "../../../types/invoice";
+import { formatToBRL } from "../../../lib/helpers";
 const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 
 ("use-client");
@@ -37,7 +38,9 @@ export const ItemBar = ({
         <span>{description}</span>
       </li>
       <li className={`${styles.value} ${roboto.className}`}>
-        <span className={`${invoiceTypeClass[type]}`}>{ammount}</span>
+        <span className={`${invoiceTypeClass[type]}`}>
+          {formatToBRL(ammount)}
+        </span>
       </li>
       <li className={`${styles.category}`}>
         <span>{categoryName[category]}</span>
