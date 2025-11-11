@@ -20,12 +20,14 @@ export const Form = ({ onRegisterNewInvoice }: FormProps) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const dataInvoiceObject: any = Object.fromEntries(formData.entries());
-    let invoice: Invoice = {
-      ...dataInvoiceObject,
+    const invoice: Invoice = {
+      id: crypto.randomUUID(),
+      date: new Date().toString(),
+      description: dataInvoiceObject.description,
+      type: selectedValue,
+      ammount: +dataInvoiceObject.ammount,
+      category: dataInvoiceObject.category,
     };
-    invoice.id = crypto.randomUUID();
-    invoice.date = new Date().toString();
-    invoice.type = selectedValue;
     onRegisterNewInvoice(invoice);
   };
 
