@@ -7,8 +7,9 @@ import styles from "./Button.module.scss";
 interface ButtonProps {
   variant?: Variant;
   size?: Size;
-  children: React.ReactElement;
+  children: any;
   onButtonClick?: () => void;
+  type?: any;
 }
 
 const VARIANT_CLASS = {
@@ -28,6 +29,7 @@ export const Button = ({
   size = "md",
   onButtonClick,
   children,
+  type,
 }: ButtonProps) => {
   const getVariant = (variant: Variant): string => VARIANT_CLASS[variant];
 
@@ -35,6 +37,7 @@ export const Button = ({
 
   return (
     <button
+      type={type}
       className={`${styles.button} ${getVariant(variant)} ${getSize(size)}`}
       onClick={() => onButtonClick()}
     >

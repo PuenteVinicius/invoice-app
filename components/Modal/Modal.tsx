@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import styles from "./Modal.module.scss";
 import Image from "next/image";
 import cross from "../../assets/cross.svg";
+import { Form } from "../Form/Form";
 
 ("use-client");
 
@@ -23,6 +24,9 @@ export const Modal = ({ isOpen, title, onSubmit, onClose }: ModalProps) => {
           <div className={`${styles.crossicon}`} onClick={() => onClose()}>
             <Image height={28} width={28} src={cross} alt="Cross Icon" />
           </div>
+        </div>
+        <div className={`${styles.body}`}>
+          <Form />
         </div>
       </div>
     </div>
