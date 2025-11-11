@@ -1,38 +1,34 @@
 import React from "react";
-import { InvoiceCategory, InvoiceType } from "../../../types/invoice";
+
 import styles from "./ItemBar.module.scss";
 import Image from "next/image";
 import trashIcon from "../../../assets/feather-trash.svg";
 import { Roboto } from "next/font/google";
+import Invoice, { Category, Type } from "../../../types/invoice";
 const roboto = Roboto({ weight: "700", subsets: ["latin"] });
 
 ("use-client");
 
 interface ItemBarProps {
-  description: string;
-  value: string;
-  category: InvoiceCategory;
-  date: string;
-  type: InvoiceType;
   onDeleteItemClick: () => void;
 }
 
 export const ItemBar = ({
   description,
-  value,
+  type,
+  ammount,
   category,
   date,
-  type,
   onDeleteItemClick = () => console.log("click"),
-}: ItemBarProps) => {
+}: ItemBarProps & Invoice) => {
   const invoiceTypeClass = {
-    expense: styles.expense,
-    income: styles.income,
+    [Type.EXPENSE]: styles.expense,
+    [Type.INCOME]: styles.income,
   };
 
   const categoryName = {
-    education: "Educação",
-    salary: "Receita Fixa",
+    [Category.EDUCATION]: "Educação",
+    [Category.SALARY]: "Receita Fixa",
   };
 
   return (
@@ -41,7 +37,7 @@ export const ItemBar = ({
         <span>{description}</span>
       </li>
       <li className={`${styles.value} ${roboto.className}`}>
-        <span className={`${invoiceTypeClass[type]}`}>{value}</span>
+        <span className={`${invoiceTypeClass[type]}`}>{ammount}</span>
       </li>
       <li className={`${styles.category}`}>
         <span>{categoryName[category]}</span>

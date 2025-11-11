@@ -1,5 +1,5 @@
 import React from "react";
-import { Size } from "../../types/styles";
+import { SizeType } from "../../types/styles";
 import styles from "./Input.module.scss";
 
 ("use-client");
@@ -8,7 +8,7 @@ interface InputProps {
   placeholder: string;
   value?: string;
   id: string;
-  size?: Size;
+  size?: SizeType;
   className?: string;
   name: string;
 }
@@ -18,7 +18,6 @@ export const Input = ({
   value,
   id,
   className,
-  size = "md",
   name,
 }: InputProps) => {
   return (

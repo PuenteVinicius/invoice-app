@@ -1,7 +1,9 @@
 import React from "react";
-import { Size, Variant } from "../../types/styles";
 import styles from "./Card.module.scss";
+
+import { Size, SizeType, Variant, VariantType } from "../../types/styles";
 import { Poppins, Roboto } from "next/font/google";
+
 const poppins = Poppins({ weight: "200", subsets: ["latin"] });
 const poppinsBold = Poppins({ weight: "500", subsets: ["latin"] });
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
@@ -13,21 +15,21 @@ interface CardProps {
   value?: string;
   children?: React.ReactElement;
   rightIcon?: any;
-  variant?: Variant;
-  size?: Size;
+  variant?: VariantType;
+  size?: SizeType;
   className?: string;
 }
 
 const VARIANT_CLASS = {
-  primary: styles.primary,
-  secondary: styles.secondary,
-  warning: styles.warning,
+  [Variant.PRIMARY]: styles.primary,
+  [Variant.SECONDARY]: styles.secondary,
+  [Variant.WARNING]: styles.warning,
 };
 
 const SIZE_CLASS = {
-  sm: styles.sm,
-  md: styles.md,
-  lg: styles.lg,
+  [Size.SM]: styles.sm,
+  [Size.MD]: styles.md,
+  [Size.LG]: styles.lg,
 };
 
 export const Card = ({
@@ -36,11 +38,11 @@ export const Card = ({
   rightIcon,
   variant = "primary",
   size = "md",
-  className = "",
+  className,
 }: CardProps) => {
-  const getVariant = (variant: Variant): string => VARIANT_CLASS[variant];
+  const getVariant = (variant: VariantType): string => VARIANT_CLASS[variant];
 
-  const getSize = (size: Size): string => SIZE_CLASS[size];
+  const getSize = (size: SizeType): string => SIZE_CLASS[size];
 
   return (
     <div

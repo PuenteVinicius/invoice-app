@@ -2,11 +2,16 @@ import React from "react";
 import { ItemBar } from "./ItemBar/ItemBar";
 import styles from "./InvoiceTable.module.scss";
 import { Roboto } from "next/font/google";
+import Invoice from "../../types/invoice";
 const roboto = Roboto({ weight: "300", subsets: ["latin"] });
 
 ("use-client");
 
-export const InvoiceTable = ({}) => {
+interface InvoiceTableProps {
+  invoices: Invoice[];
+}
+
+export const InvoiceTable = ({ invoices }: InvoiceTableProps) => {
   return (
     <div className={`${styles.table} ${roboto.className}`}>
       <ul className={`${styles.th}`}>
@@ -23,38 +28,17 @@ export const InvoiceTable = ({}) => {
           <span>Data</span>
         </li>
       </ul>
-      <ItemBar
-        description="Curso de NextJS"
-        value="R$ 899,OO"
-        type="expense"
-        category="education"
-        date="12/02/2024"
-        onDeleteItemClick={() => console.log("")}
-      />
-      <ItemBar
-        description="Salário"
-        value="R$ 7.350,OO"
-        type="income"
-        category="salary"
-        date="12/02/2024"
-        onDeleteItemClick={() => console.log("")}
-      />
-      <ItemBar
-        description="Curso de NextJS"
-        value="R$ 899,OO"
-        type="expense"
-        category="education"
-        date="12/02/2024"
-        onDeleteItemClick={() => console.log("")}
-      />
-      <ItemBar
-        description="Curso de NextJS"
-        value="R$ 899,OO"
-        type="expense"
-        category="education"
-        date="12/02/2024"
-        onDeleteItemClick={() => console.log("")}
-      />
+      {invoices &&
+        invoices.map((invoice: Invoice) => (
+          <ItemBar
+            description={invoice.description}
+            ammount={invoice.ammount}
+            type={invoice.type}
+            category={invoice.category}
+            date={invoice.date}
+            onDeleteItemClick={() => console.log("")}
+          />
+        ))}
     </div>
   );
 };

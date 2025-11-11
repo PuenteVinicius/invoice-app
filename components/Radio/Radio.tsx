@@ -1,5 +1,5 @@
 import React from "react";
-import { Size } from "../../types/styles";
+import { SizeType } from "../../types/styles";
 import styles from "./Radio.module.scss";
 import { Roboto } from "next/font/google";
 const roboto = Roboto({ weight: "500", subsets: ["latin"] });
@@ -10,7 +10,7 @@ interface RadioProps {
   label: string;
   value?: string;
   id: string;
-  size?: Size;
+  size?: SizeType;
   className?: string;
   name: string;
   selectedValue: any;

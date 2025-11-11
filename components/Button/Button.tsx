@@ -1,5 +1,5 @@
 import React from "react";
-import { Size, Variant } from "../../types/styles";
+import { Size, SizeType, Variant, VariantType } from "../../types/styles";
 import styles from "./Button.module.scss";
 import { Roboto } from "next/font/google";
 const roboto = Roboto({ weight: "500", subsets: ["latin"] });
@@ -7,23 +7,23 @@ const roboto = Roboto({ weight: "500", subsets: ["latin"] });
 ("use-client");
 
 interface ButtonProps {
-  variant?: Variant;
-  size?: Size;
-  children: any;
+  variant?: VariantType;
+  size?: SizeType;
   onButtonClick?: () => void;
   type?: any;
+  children: any;
 }
 
 const VARIANT_CLASS = {
-  primary: styles.primary,
-  secondary: styles.secondary,
-  warning: styles.warning,
+  [Variant.PRIMARY]: styles.primary,
+  [Variant.SECONDARY]: styles.secondary,
+  [Variant.WARNING]: styles.warning,
 };
 
 const SIZE_CLASS = {
-  sm: styles.sm,
-  md: styles.md,
-  lg: styles.lg,
+  [Size.SM]: styles.sm,
+  [Size.MD]: styles.md,
+  [Size.LG]: styles.lg,
 };
 
 export const Button = ({
@@ -33,9 +33,9 @@ export const Button = ({
   children,
   type,
 }: ButtonProps) => {
-  const getVariant = (variant: Variant): string => VARIANT_CLASS[variant];
+  const getVariant = (variant: VariantType): string => VARIANT_CLASS[variant];
 
-  const getSize = (size: Size): string => SIZE_CLASS[size];
+  const getSize = (size: SizeType): string => SIZE_CLASS[size];
 
   return (
     <button

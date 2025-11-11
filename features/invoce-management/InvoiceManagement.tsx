@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./InvoiceManagement.module.scss";
 import { Card } from "../../components/Card/Card";
 import Image from "next/image";
 import featherArrowDownRight from "../../assets/feather-arrow-down-right.svg";
 import featherArrowUpRight from "../../assets/feather-arrow-up-right.svg";
 import { InvoiceTable } from "../../components/invoiceTable/InvoiceTable";
+import Invoice from "../../types/invoice";
+import { useInvoice } from "../../hooks/useInvoice";
 
 ("use-client");
 
-export const InvoiceManagement = ({}) => {
+export const InvoiceManagement = () => {
+  const [invoices, setInvoices] = useState<Invoice[]>();
+  const { getInvoices } = useInvoice();
+
+  useEffect(() => {
+    setInvoices(getInvoices());
+  }, []);
+
   return (
     <main>
       <div className={`${styles.invoice}`}>
@@ -33,7 +42,7 @@ export const InvoiceManagement = ({}) => {
         />
       </div>
       <div className={`${styles.invoice_table}`}>
-        <InvoiceTable />
+        <InvoiceTable invoices={invoices} />
       </div>
     </main>
   );
