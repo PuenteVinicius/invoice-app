@@ -1,7 +1,5 @@
 // .storybook/preview.ts
 import type { Preview } from '@storybook/react';
-import '../.next/static/css/app/layout.css'; 
-import '../.next/static/css/app/page.css';
 
 const preview: Preview = {
   parameters: {

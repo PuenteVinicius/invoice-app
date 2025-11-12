@@ -2,8 +2,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 import React from "react";
-import { Size, Variant } from "../../types/styles";
 import styles from "./Button.module.scss";
+import { SizeType, VariantType } from "../../types/styles";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -254,17 +254,18 @@ export const AllVariants: Story = {
         alignItems: "center",
       }}
     >
-      {(["primary", "secondary", "warning"] as Variant[]).map((variant) => (
+      {(["primary", "secondary", "warning"] as VariantType[]).map((variant) => (
         <div
           key={variant}
           style={{ display: "flex", gap: "12px", alignItems: "center" }}
         >
-          {(["sm", "md", "lg"] as Size[]).map((size) => (
+          {(["sm", "md", "lg"] as SizeType[]).map((size) => (
             <Button
               key={`${variant}-${size}`}
               variant={variant}
               size={size}
               onButtonClick={() => console.log(`${variant} ${size} clicked`)}
+              disabled
             >
               <span>
                 {variant} - {size}

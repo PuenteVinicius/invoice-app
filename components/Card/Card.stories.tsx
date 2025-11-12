@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Card } from "./Card";
 import React from "react";
-import { Size, Variant } from "../../types/styles";
+import { SizeType, VariantType } from "../../types/styles";
 
 const SampleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -81,7 +81,7 @@ const meta: Meta<typeof Card> = {
     variant: "primary",
     size: "md",
     title: "Card Title",
-    value: "R$ 1.234,56",
+    value: 1234.56,
   },
 };
 
@@ -92,7 +92,7 @@ export const Primary: Story = {
   args: {
     variant: "primary",
     title: "Total de Vendas",
-    value: "R$ 25.000,00",
+    value: 25000.0,
   },
   parameters: {
     docs: {
@@ -107,7 +107,7 @@ export const Secondary: Story = {
   args: {
     variant: "secondary",
     title: "Usuários Ativos",
-    value: "1.234",
+    value: 1.234,
   },
   parameters: {
     docs: {
@@ -122,7 +122,6 @@ export const Warning: Story = {
   args: {
     variant: "warning",
     title: "Atenção",
-    value: "5 Pendências",
   },
   parameters: {
     docs: {
@@ -137,7 +136,7 @@ export const Small: Story = {
   args: {
     size: "sm",
     title: "Conversão",
-    value: "2.5%",
+    value: 2.5,
   },
   parameters: {
     docs: {
@@ -152,7 +151,7 @@ export const Medium: Story = {
   args: {
     size: "md",
     title: "Ticket Médio",
-    value: "R$ 150,00",
+    value: 150.0,
   },
   parameters: {
     docs: {
@@ -167,7 +166,7 @@ export const Large: Story = {
   args: {
     size: "lg",
     title: "Receita Total do Mês",
-    value: "R$ 89.456,23",
+    value: 89456.23,
   },
   parameters: {
     docs: {
@@ -181,7 +180,7 @@ export const Large: Story = {
 export const WithIcon: Story = {
   args: {
     title: "Meta Mensal",
-    value: "85%",
+    value: 85,
     rightIcon: <SettingsIcon />,
   },
   parameters: {
@@ -196,7 +195,7 @@ export const WithIcon: Story = {
 export const WithCustomIcon: Story = {
   args: {
     title: "Crescimento",
-    value: "+12.5%",
+    value: 12.5,
     rightIcon: <div style={{ color: "green", fontSize: "20px" }}>↗</div>,
   },
   parameters: {
@@ -208,45 +207,12 @@ export const WithCustomIcon: Story = {
   },
 };
 
-export const PrimaryLargeWithIcon: Story = {
-  args: {
-    variant: "primary",
-    size: "lg",
-    title: "Performance Geral",
-    value: "Excelente",
-    rightIcon: <SampleIcon />,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Combinação de variante primária com tamanho grande e ícone.",
-      },
-    },
-  },
-};
-
-export const WarningSmall: Story = {
-  args: {
-    variant: "warning",
-    size: "sm",
-    title: "Alerta",
-    value: "3 Críticos",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Card de aviso em tamanho pequeno.",
-      },
-    },
-  },
-};
-
 export const FinancialCard: Story = {
   args: {
     variant: "primary",
     size: "md",
     title: "Saldo Disponível",
-    value: "R$ 45.678,90",
+    value: 45678.9,
     rightIcon: <SampleIcon />,
   },
   parameters: {
@@ -256,57 +222,6 @@ export const FinancialCard: Story = {
       },
     },
   },
-};
-
-export const MetricsCard: Story = {
-  args: {
-    variant: "secondary",
-    size: "sm",
-    title: "Novos Leads",
-    value: "247",
-    rightIcon: <div style={{ color: "blue", fontSize: "16px" }}>📈</div>,
-  },
-};
-
-export const AlertCard: Story = {
-  args: {
-    variant: "warning",
-    title: "Serviços Pendentes",
-    value: "7 itens",
-    rightIcon: <SettingsIcon />,
-  },
-};
-
-export const WithCustomStyles: Story = {
-  args: {
-    title: "Card Personalizado",
-    value: "Valor Custom",
-    className: "custom-card-class",
-    rightIcon: <SampleIcon />,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Card com classes CSS personalizadas adicionais.",
-      },
-    },
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <style>
-          {`
-            .custom-card-class {
-              border: 2px dashed #666;
-              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-              color: white;
-            }
-          `}
-        </style>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const AllVariantsShowcase: Story = {
@@ -319,7 +234,7 @@ export const AllVariantsShowcase: Story = {
         maxWidth: "900px",
       }}
     >
-      {(["primary", "secondary", "warning"] as Variant[]).map((variant) => (
+      {(["primary", "secondary", "warning"] as VariantType[]).map((variant) => (
         <div
           key={variant}
           style={{ display: "flex", flexDirection: "column", gap: "15px" }}
@@ -327,13 +242,13 @@ export const AllVariantsShowcase: Story = {
           <h4 style={{ margin: "0 0 10px 0", textTransform: "capitalize" }}>
             {variant}
           </h4>
-          {(["sm", "md", "lg"] as Size[]).map((size) => (
+          {(["sm", "md", "lg"] as SizeType[]).map((size) => (
             <Card
               key={`${variant}-${size}`}
               variant={variant}
               size={size}
               title={`${variant} - ${size}`}
-              value={`R$ ${(Math.random() * 10000).toFixed(2)}`}
+              value={Math.random() * 10000}
               rightIcon={size === "lg" ? <SampleIcon /> : undefined}
             />
           ))}
@@ -350,21 +265,6 @@ export const AllVariantsShowcase: Story = {
   },
 };
 
-export const InteractiveCard: Story = {
-  args: {
-    title: "Card Interativo",
-    value: "Clique para ver ações",
-    rightIcon: <SettingsIcon />,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Card que pode ser customizado através dos controles no painel.",
-      },
-    },
-  },
-};
-
 export const CardGrid: Story = {
   render: () => (
     <div
@@ -375,24 +275,14 @@ export const CardGrid: Story = {
         maxWidth: "800px",
       }}
     >
-      <Card variant="primary" size="sm" title="Vendas Hoje" value="R$ 2.345" />
-      <Card
-        variant="secondary"
-        size="sm"
-        title="Conversões"
-        value="45"
-        rightIcon={<SampleIcon />}
-      />
-      <Card variant="warning" size="sm" title="Cancelamentos" value="3" />
+      <Card variant="primary" size="sm" title="Vendas Hoje" value={2.345} />
       <Card
         variant="primary"
         size="md"
         title="Meta do Mês"
-        value="R$ 50.000"
+        value={50.0}
         rightIcon={<SettingsIcon />}
       />
-      <Card variant="secondary" size="md" title="Taxa de Sucesso" value="92%" />
-      <Card variant="primary" size="sm" title="Clientes Novos" value="12" />
     </div>
   ),
   parameters: {

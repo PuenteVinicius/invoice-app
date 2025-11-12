@@ -9,7 +9,7 @@ const roboto = Roboto({ weight: "500", subsets: ["latin"] });
 interface ButtonProps {
   variant?: VariantType;
   size?: SizeType;
-  disabled: boolean;
+  disabled?: boolean;
   onButtonClick?: () => void;
   type?: any;
   children: any;
