@@ -1,68 +1,22 @@
 # Invoice App
 
-Uma aplicação Next.js moderna para buscar e explorar usuários do GitHub com interface elegante e recursos avançados.
+Uma aplicação Next.js moderna para administrar entrada e saídas de "invoices"
 
 ## 🚀 Funcionalidades
 
-- **🔍 Busca de Usuários**: Integração direta com a API do GitHub
-- **📄 Paginação**: Navegação suave entre páginas de resultados
-- **🎨 Design Moderno**: Interface com Tailwind CSS e Styled Components
-- **♿ Acessibilidade**: Componentes totalmente acessíveis
-- **🧪 Testes Abrangentes**: Testes unitários com Jest e Testing Library
+- **🔍 Controle de Contas**:
+- **🧪 Testes Abrangentes**: Testes unitários com Vitest e Testing Library
 - **📚 Documentação**: Storybook para documentação de componentes
 - **⚡ Performance**: Otimizado para rápido carregamento
-- **📱 Responsivo**: Design que funciona em todos os dispositivos
 
 ## 🛠 Tecnologias
 
 - **Framework**: Next.js 14 (App Router)
 - **Linguagem**: TypeScript
-- **Estilização**: Tailwind CSS + Styled Components
-- **Testes**: Jest + React Testing Library
+- **Estilização**: SCSS
+- **Testes**: Vitest + React Testing Library
 - **Documentação**: Storybook
-- **HTTP Client**: Fetch API nativo
 - **Linting**: ESLint
-
-## 🎯 Componentes Principais
-
-### UserCard
-
-Exibe informações do usuário do GitHub:
-
-- Avatar
-- Nome de usuário
-- Link para perfil
-- Design responsivo e clicável
-
-### UserList
-
-Gerencia a exibição da lista de usuários com estados:
-
-- Loading
-- Error
-- Empty state
-- Success state
-
-### Pagination
-
-Navegação entre páginas de resultados:
-
-- Botões anterior/próximo
-- Contador de páginas
-- Estados desabilitados nas extremidades
-
-### Loading
-
-Spinner animado com mensagem personalizável
-
-## 🔧 Instalação e Configuração
-
-### Pré-requisitos
-
-- Node.js 18+
-- npm ou yarn
-
-### Instalação
 
 1. **Clone o repositório**
 
@@ -77,14 +31,7 @@ cd invoice-app
 npm install
 ```
 
-3. **Configure as variáveis de ambiente**
-
-```bash
-# Crie um arquivo .env.local
-# A API do GitHub não requer chave para buscas públicas
-```
-
-4. **Execute em desenvolvimento**
+3. **Execute em desenvolvimento**
 
 ```bash
 npm run dev
@@ -160,60 +107,10 @@ Acesse em `http://localhost:6006` para explorar todos os componentes.
 
 ## 🎨 Estilização
 
-### Tailwind CSS
-
-- Sistema de design consistente
-- Utilitários para rápido desenvolvimento
-- Configuração personalizada
-
-### Styled Components
-
-- Estilos componentizados
-- Temas dinâmicos
-- Server-side rendering
-
-### Design System
-
 - Cores semânticas
 - Tipografia consistente
 - Componentes acessíveis
 
-## 🔌 API
-
-### GitHub API Integration
-
-- Busca de usuários via `search/users`
-- Paginação (20 resultados por página)
-- Tratamento de erros e rate limiting
-
-### Exemplo de Uso
-
-```typescript
-const { users, loading, error, searchUsers } = useGitHubSearch();
-
-// Buscar usuários
-await searchUsers("username", 1);
-```
-
-### Vercel (Recomendado)
-
-```bash
-npm run build
-vercel --prod
-```
-
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-## 🐛 Problemas Conhecidos
-
-- Rate limiting da API do GitHub (60 requisições por hora não autenticadas)
-- Limitação de 1000 resultados na busca do GitHub
-
-## 🔮 Próximas Funcionalidades
-
-- [ ] Autenticação com GitHub para maior rate limit
-- [ ] Cache de resultados
-- [ ] Favoritos locais
-- [ ] Filtros avançados (localização, linguagens, etc.)
